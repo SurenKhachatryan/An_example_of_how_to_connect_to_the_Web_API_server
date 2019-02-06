@@ -8,11 +8,6 @@ namespace UsersDataWebAPI.Models
 {
     public class UserDBInitializer : DropCreateDatabaseAlways<UserContext>
     {
-        UserContext db = new UserContext();
-        public UserDBInitializer()
-        {
-            Seed(db);
-        }
         protected override void Seed(UserContext db)
         {
             db.Users.Add(new User { Fitst_Name = "Tom", Last_Name = "Hardy", Age = 41 });
