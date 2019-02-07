@@ -17,9 +17,17 @@ namespace UsersDataWebAPI.Controllers
         /// Возвращает всех пользователей
         /// </summary>
         [HttpGet]
-        public IEnumerable<User> GetAllUser()
+        public HttpResponseMessage GetAllUser()
         {
-            return db.Users;
+            try
+            {
+                IEnumerable<User> users = db.Users;
+                return Request.CreateResponse(HttpStatusCode.OK, users);
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
         }
 
 
