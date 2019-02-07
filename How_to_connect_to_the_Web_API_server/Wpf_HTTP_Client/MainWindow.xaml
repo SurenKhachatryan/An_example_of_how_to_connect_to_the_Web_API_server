@@ -5,8 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_HTTP_Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Background="#FF363636" WindowStartupLocation="CenterScreen" Width="810" ResizeMode="NoResize" Height="354" BorderBrush="Black">
     <Grid>
-        
+        <WrapPanel HorizontalAlignment="Left" Width="792">
+            <WrapPanel  Width="199" Background="#FF363636">
+                <WrapPanel Background="#FF363636" Width="199" >
+                    <Label Content="Add New User" HorizontalContentAlignment="Center" Foreground="#FFFF0101" Width="197" FontFamily="Broadway" OpacityMask="Black"/>
+                    <Label Content="Firts Name" Width="76" FontFamily="Verdana" Foreground="White"/>
+                    <TextBox Name="CreateUserTextBoxFirst_Name" MaxLength="30" Height="23" Width="120" FontFamily="Verdana" BorderBrush="#FF767676" Background="#FF767676"/>
+                    <Label Content="Last_Name" Width="76" FontFamily="Verdana" Foreground="White"/>
+                    <TextBox Name="CreateUserTextBoxLast_Name" MaxLength="30" Height="23" Width="120" FontFamily="Verdana" BorderBrush="#FF767676" Background="#FF767676"/>
+                    <Label Content="Age" Width="76" FontFamily="Verdana" Foreground="White"/>
+                    <TextBox Name="CreateUserTextBoxAge" MaxLength="3" Height="23" Width="32" FontFamily="Verdana" Margin="0,0,5,0" BorderBrush="#FF767676" Background="#FF767676"/>
+                    <Button Content="Add User" Width="82" Height="23" FontFamily="Verdana" Background="#FF767676"/>
+                </WrapPanel>
+
+                <WrapPanel Background="#FF363636" Width="199" Height="53">
+                    <Label Content="Delete User" HorizontalContentAlignment="Center" Width="197" Foreground="#FFF50000" FontFamily="Broadway"/>
+                    <Label Content="UserID" FontFamily="Verdana" Width="76" Foreground="White"/>
+                    <TextBox Name="DeleteUserTextBoxUserID" Text="1234" Width="36" Height="23" MaxLength="4" FontFamily="Verdana" Margin="0,0,5,0" BorderBrush="#FF767676" Background="#FF767676"/>
+                    <Button Name="DeleteUserButtonUserID" Content="Get User" Width="79" Height="23" FontFamily="Verdana" Background="#FF767676"/>
+                </WrapPanel>
+
+                <WrapPanel Background="#FF363636" Width="199" Height="127">
+                    <Label Content="Update User Data" HorizontalContentAlignment="Center" Foreground="Red" Width="197" FontFamily="Broadway"/>
+                    <Label Content="UserID" FontFamily="Verdana" Width="76" Foreground="White"/>
+                    <TextBox Name="UpdateUserTextBoxUserID" Text="1234" Width="36" Height="23" MaxLength="4" FontFamily="Verdana" Margin="0,0,5,0" BorderBrush="#FF767676" Background="#FF767676"/>
+                    <Button Name="UpdateUserButtonUserID" Content="Get User" Width="79" Height="23" FontFamily="Verdana" Background="#FF767676"/>
+                    <Label Content="Firts Name" Width="76" FontFamily="Verdana" Foreground="White"/>
+                    <TextBox Name="UpdateUserTextBoxFirst_Name" MaxLength="30" Height="23" Width="120" FontFamily="Verdana" BorderBrush="#FF767676" Background="#FF767676"/>
+                    <Label Content="Last_Name" Width="76" FontFamily="Verdana" Foreground="White"/>
+                    <TextBox Name="UpdateUserTextBoxLast_Name" MaxLength="30" Height="23" Width="120" FontFamily="Verdana" BorderBrush="#FF767676" Background="#FF767676"/>
+                    <Label Content="Age" Width="76" FontFamily="Verdana" Foreground="White"/>
+                    <TextBox Name="UpdateUserTextBoxAge" BorderBrush="#FF767676" Background="#FF767676" MaxLength="3" Height="23" Width="32" FontFamily="Verdana" Margin="0,0,5,0"/>
+                    <Button Content="Update" Width="83" Height="23" FontFamily="Verdana" Background="#FF767676"/>
+                </WrapPanel>
+            </WrapPanel>
+            <WrapPanel Height="314" Width="593" Background="#FF363636">
+                <DataGrid Width="592" Height="282" Margin="0,0,0,2" BorderBrush="#FF767676" Background="#FF767676"/>
+                <Button Margin="503,0,0,0" Name="buttonGetAllUsers" Content="Get All Users" Width="88" FontFamily="Verdana" Height="26" Background="#FF767676"/>
+            </WrapPanel>
+        </WrapPanel>
+
     </Grid>
 </Window>
