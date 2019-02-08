@@ -15,6 +15,7 @@ namespace Wpf_HTTP_Client
     public partial class MainWindow : Window
     {
         private const string url = "http://localhost:54754/api/Users";
+
         private HttpClient client = new HttpClient();
         private HttpResponseMessage response;
         private User user;
@@ -36,7 +37,6 @@ namespace Wpf_HTTP_Client
                 Fitst_Name = CreateUserTextBoxFirst_Name.Text,
                 Last_Name = CreateUserTextBoxLast_Name.Text,
                 Age = int.Parse(CreateUserTextBoxAge.Text)
-
             };
 
             response = client.PostAsync(url, user, new JsonMediaTypeFormatter()).Result;
@@ -50,6 +50,37 @@ namespace Wpf_HTTP_Client
                 CreateUserTextBoxAge.Clear();
                 GetAllUsers();
             }
+
+        }
+
+        /// <summary>
+        /// Обновляет Данные Пользователя с определенного ID
+        /// </summary>
+        private void Button_Click_Update_User_Data(object sender, RoutedEventArgs e)
+        {
+            user = new User()
+            {
+                UserId = int.Parse(UpdateUserTextBoxUserID.Text),
+                Fitst_Name = UpdateUserTextBoxFirst_Name.Text,
+                Last_Name = UpdateUserTextBoxLast_Name.Text,
+                Age = int.Parse(UpdateUserTextBoxAge.Text)
+            };
+
+            response = client.PutAsync(url + $"/{UpdateUserTextBoxUserID.Text}", user, new JsonMediaTypeFormatter()).Result;
+
+            if (response.StatusCode != HttpStatusCode.OK)
+                MessageBox.Show("Error 404 Not Found");
+            else
+            {
+                UpdateUserTextBoxAge.Clear();
+                UpdateUserTextBoxFirst_Name.Clear();
+                UpdateUserTextBoxLast_Name.Clear();
+                GetAllUsers();
+            }
+        }
+
+        private void DeleteUserButtonUserID_Click(object sender, RoutedEventArgs e)
+        {
 
         }
 

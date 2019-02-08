@@ -24,7 +24,7 @@
                     <Label Content="Delete User" HorizontalContentAlignment="Center" Width="197" Foreground="#FFF50000" FontFamily="Broadway"/>
                     <Label Content="UserID" FontFamily="Verdana" Width="76" Foreground="White"/>
                     <TextBox Name="DeleteUserTextBoxUserID" Width="36" Height="23" MaxLength="4" FontFamily="Verdana" Margin="0,0,5,0" BorderBrush="#FF767676" Background="#FF767676"/>
-                    <Button Name="DeleteUserButtonUserID" Content="Delete User" Width="79" Height="23" FontFamily="Verdana" Background="#FF767676"/>
+                    <Button Name="DeleteUserButtonUserID" Content="Delete User" Width="79" Height="23" FontFamily="Verdana" Background="#FF767676" Click="DeleteUserButtonUserID_Click"/>
                 </WrapPanel>
 
                 <WrapPanel Background="#FF363636" Width="199" Height="127">
@@ -38,7 +38,7 @@
                     <TextBox Name="UpdateUserTextBoxLast_Name" MaxLength="30" Height="23" Width="120" FontFamily="Verdana" BorderBrush="#FF767676" Background="#FF767676"/>
                     <Label Content="Age" Width="76" FontFamily="Verdana" Foreground="White"/>
                     <TextBox Name="UpdateUserTextBoxAge" BorderBrush="#FF767676" Background="#FF767676" MaxLength="3" Height="23" Width="32" FontFamily="Verdana" Margin="0,0,5,0"/>
-                    <Button Content="Update" Width="83" Height="23" FontFamily="Verdana" Background="#FF767676"/>
+                    <Button Content="Update" Width="83" Height="23" FontFamily="Verdana" Background="#FF767676" Click="Button_Click_Update_User_Data"/>
                 </WrapPanel>
             </WrapPanel>
             <WrapPanel Margin="0,5,0,0" Height="282" Width="325" Background="#FF363636">
