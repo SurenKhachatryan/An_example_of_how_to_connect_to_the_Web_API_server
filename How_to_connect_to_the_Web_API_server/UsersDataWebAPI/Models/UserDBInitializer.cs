@@ -2,7 +2,7 @@
 
 namespace UsersDataWebAPI.Models
 {
-    public class UserDBInitializer : DropCreateDatabaseAlways<UserContext>
+    public class UserDBInitializer : CreateDatabaseIfNotExists<UserContext>
     {
         protected override void Seed(UserContext db)
         {
