@@ -102,6 +102,7 @@ namespace UsersDataWebAPI.Controllers
             if (user != null)
             {
                 db.Users.Remove(user);
+                db.SaveChanges();
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             else

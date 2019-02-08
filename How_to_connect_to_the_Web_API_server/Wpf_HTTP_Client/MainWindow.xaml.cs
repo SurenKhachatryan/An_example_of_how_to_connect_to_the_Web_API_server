@@ -79,13 +79,30 @@ namespace Wpf_HTTP_Client
             }
         }
 
+        /// <summary>
+        /// Удаляет пользователя по определенного ID
+        /// </summary>
         private void DeleteUserButtonUserID_Click(object sender, RoutedEventArgs e)
         {
+            if (DeleteUserTextBoxUserID.Text == "")
+            {
+                MessageBox.Show("Please Enter UserID and try again.");
+                return;
+            }
 
+            response = client.DeleteAsync(url + $"/{DeleteUserTextBoxUserID.Text}").Result;
+
+            if (response.StatusCode != HttpStatusCode.OK)
+                MessageBox.Show("Error 404 Not Found");
+            else
+            {
+                DeleteUserTextBoxUserID.Clear();
+                GetAllUsers();
+            }
         }
 
         /// <summary>
-        /// Получает Пользователя по определенному ID и присваивает значения к TextBox-ам
+        /// Получает пользователя по определенному ID и присваивает значения к TextBox-ам
         /// </summary>
         private void UpdateUserButtonGetFromUserID_Click(object sender, RoutedEventArgs e)
         {
