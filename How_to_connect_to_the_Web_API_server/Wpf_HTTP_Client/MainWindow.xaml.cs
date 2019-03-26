@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Web.Script.Serialization;
+using System.Net.Http.Formatting;
 using System.Windows;
 using Wpf_HTTP_Client.Models;
-using System.Linq;
-using System.Net.Http.Formatting;
 
 namespace Wpf_HTTP_Client
 {
@@ -19,7 +18,6 @@ namespace Wpf_HTTP_Client
         private HttpClient client = new HttpClient();
         private HttpResponseMessage response;
         private User user;
-        private JavaScriptSerializer jsSerializer;
 
         public MainWindow()
         {
@@ -30,7 +28,7 @@ namespace Wpf_HTTP_Client
         /// <summary>
         /// Создает нового пользователя
         /// </summary>
-        private void Add_New_User_Button_Click(object sender, RoutedEventArgs e)
+        private async void Add_New_User_Button_Click(object sender, RoutedEventArgs e)
         {
             user = new User()
             {
@@ -39,7 +37,7 @@ namespace Wpf_HTTP_Client
                 Age = int.Parse(CreateUserTextBoxAge.Text)
             };
 
-            response = client.PostAsync(url, user, new JsonMediaTypeFormatter()).Result;
+            response = await client.PostAsync(url, user, new JsonMediaTypeFormatter());
 
             if (response.StatusCode != HttpStatusCode.Created)
                 MessageBox.Show("Error 404 Not Found");
@@ -117,10 +115,8 @@ namespace Wpf_HTTP_Client
 
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                jsSerializer = new JavaScriptSerializer();
-
                 resposeContent = response.Content.ReadAsStringAsync().Result;
-                user = jsSerializer.Deserialize<User>(resposeContent);
+                user = JsonConvert.DeserializeObject<User>(resposeContent);
 
                 UpdateUserTextBoxFirst_Name.Text = user.Fitst_Name;
                 UpdateUserTextBoxLast_Name.Text = user.Last_Name;
@@ -145,13 +141,12 @@ namespace Wpf_HTTP_Client
         {
             string resposeContent = null;
 
-            response = client.GetAsync(url).Result;
+            response = await client.GetAsync(url);
 
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                jsSerializer = new JavaScriptSerializer();
                 resposeContent = await response.Content.ReadAsStringAsync();
-                DataGridUser.ItemsSource = jsSerializer.Deserialize<List<User>>(resposeContent);
+                DataGridUser.ItemsSource = JsonConvert.DeserializeObject<List<User>>(resposeContent);
             }
             else
                 MessageBox.Show("Error 404 Not Found");
